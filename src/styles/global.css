@@ -1,40 +1,52 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 :root {
-	--accent: #b5651d;
-	--accent-dark: #7a3f0f;
-	--black: 26, 20, 16;
-	--gray: 138, 118, 101;
-	--gray-light: 240, 231, 220;
-	--gray-dark: 51, 41, 33;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
-	--box-shadow:
-		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-		0 16px 32px rgba(var(--gray), 33%);
+	--brown-dark: #573c27;
+	--brown-tan: #a98360;
+	--cream: #fdeed9;
+	--pink-light: #ffadc6;
+	--pink-deep: #e34989;
+
+	--brown-dark-rgb: 87, 60, 39;
+	--brown-tan-rgb: 169, 131, 96;
+	--cream-rgb: 253, 238, 217;
+	--pink-light-rgb: 255, 173, 198;
+	--pink-deep-rgb: 227, 73, 137;
+
+	--ink: rgb(var(--brown-dark-rgb));
+	--muted: rgb(var(--brown-tan-rgb));
+
+	--gradient-brand: linear-gradient(120deg, var(--pink-deep), var(--pink-light) 55%, var(--brown-tan));
+	--gradient-wash: radial-gradient(ellipse 900px 550px at 12% -8%, rgba(var(--pink-light-rgb), 0.4), transparent 60%),
+		radial-gradient(ellipse 800px 550px at 108% 15%, rgba(var(--brown-tan-rgb), 0.28), transparent 60%),
+		radial-gradient(ellipse 1000px 650px at 50% 115%, rgba(var(--pink-deep-rgb), 0.18), transparent 60%);
 }
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: var(--font-atkinson);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background: var(--gradient-wash), var(--cream);
+	background-attachment: fixed;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: rgb(var(--gray-dark));
+	color: var(--ink);
 	font-size: 20px;
 	line-height: 1.7;
 }
+
 main {
-	width: 720px;
+	width: 760px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -42,40 +54,61 @@ h4,
 h5,
 h6 {
 	margin: 0 0 0.5rem 0;
-	color: rgb(var(--black));
-	line-height: 1.2;
+	color: var(--ink);
+	line-height: 1.15;
+	font-family: var(--font-serif);
+	font-weight: 600;
 }
 h1 {
-	font-size: 3.052em;
+	font-size: 3.6em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 2.4em;
 }
 h3 {
-	font-size: 1.953em;
+	font-size: 1.9em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.5em;
 }
 h5 {
-	font-size: 1.25em;
+	font-size: 1.2em;
 }
+
+.gradient-text {
+	background: var(--gradient-brand);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
 strong,
 b {
 	font-weight: 700;
 }
+
 a {
-	color: var(--accent);
+	color: var(--pink-deep);
+	text-decoration: none;
+	background-image: linear-gradient(var(--pink-deep), var(--pink-deep));
+	background-repeat: no-repeat;
+	background-position: 0 100%;
+	background-size: 0% 1px;
+	transition: background-size 0.35s ease, color 0.35s ease;
 }
 a:hover {
-	color: var(--accent);
+	color: var(--pink-deep);
+	background-size: 100% 1px;
 }
+
 p {
 	margin-bottom: 1em;
 }
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.6em;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -86,39 +119,89 @@ input {
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
-	border-radius: 8px;
+	display: block;
 }
+
 code {
 	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	background-color: rgba(var(--brown-tan-rgb), 0.15);
+	border-radius: 4px;
 }
 pre {
 	padding: 1.5em;
-	border-radius: 8px;
+	background: rgba(var(--brown-dark-rgb), 0.05);
+	border-radius: 4px;
 }
 pre > code {
 	all: unset;
 }
+
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0;
-	font-size: 1.333em;
+	position: relative;
+	margin: 2em 0;
+	padding: 0.2em 0 0.2em 1.75em;
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-size: 1.35em;
+	color: var(--ink);
 }
+blockquote::before {
+	content: '\201C';
+	position: absolute;
+	left: -0.1em;
+	top: -0.2em;
+	font-size: 2.2em;
+	font-family: var(--font-serif);
+	background: var(--gradient-brand);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
 hr {
 	border: none;
-	border-top: 1px solid rgb(var(--gray-light));
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(var(--pink-deep-rgb), 0.5), transparent);
 }
+
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;
 	}
 	main {
-		padding: 1em;
+		padding: 1.5em 1em;
+	}
+	h1 {
+		font-size: 2.6em;
+	}
+}
+
+/* Scroll-reveal utility — see ScrollReveal.astro for the observer script */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-reveal].is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+	}
+	[data-reveal] {
+		opacity: 1;
+		transform: none;
 	}
 }
 
@@ -130,12 +213,8 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
 	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
 	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
 	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }

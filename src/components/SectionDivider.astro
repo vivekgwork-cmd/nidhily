@@ -1,0 +1,50 @@
+<div class="section-divider" aria-hidden="true">
+	<span class="line"></span>
+	<svg class="lotus" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<linearGradient id="lotusGrad" x1="0" y1="0" x2="48" y2="32" gradientUnits="userSpaceOnUse">
+				<stop offset="0%" stop-color="#e34989" />
+				<stop offset="100%" stop-color="#a98360" />
+			</linearGradient>
+		</defs>
+		<path
+			d="M24 30c-8 0-14-6-14-13 4 3 9 4 14 4s10-1 14-4c0 7-6 13-14 13Z"
+			stroke="url(#lotusGrad)"
+			stroke-width="1.4"
+			stroke-linejoin="round"
+		></path>
+		<path d="M24 30V10" stroke="url(#lotusGrad)" stroke-width="1.4" stroke-linecap="round"></path>
+		<path
+			d="M24 18c-3-6-3-11 0-16 3 5 3 10 0 16Z"
+			stroke="url(#lotusGrad)"
+			stroke-width="1.2"
+			stroke-linejoin="round"
+		></path>
+		<path
+			d="M24 20c-6-3-10-7-11-13 6 1 10 5 13 10 3-5 7-9 13-10-1 6-5 10-11 13"
+			stroke="url(#lotusGrad)"
+			stroke-width="1.1"
+			stroke-linejoin="round"
+		></path>
+	</svg>
+	<span class="line"></span>
+</div>
+
+<style>
+	.section-divider {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		margin: 3.5rem 0;
+	}
+	.line {
+		flex: 1;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(233, 73, 137, 0.5) 50%, transparent);
+	}
+	.lotus {
+		width: 34px;
+		flex-shrink: 0;
+		opacity: 0.85;
+	}
+</style>

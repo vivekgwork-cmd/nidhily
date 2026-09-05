@@ -3,9 +3,11 @@ import { Image } from 'astro:assets';
 import { getCollection, getEntry, render } from 'astro:content';
 import portrait from '../assets/shrinidhi-portrait.png';
 import BaseHead from '../components/BaseHead.astro';
+import BrainMotif from '../components/BrainMotif.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import SectionDivider from '../components/SectionDivider.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const home = await getEntry('pages', 'home');
@@ -24,37 +26,53 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 			.hero {
 				display: flex;
 				align-items: center;
-				gap: 3rem;
+				gap: 3.5rem;
 				flex-wrap: wrap;
+				padding-top: 1.5rem;
 			}
 			.hero-portrait {
 				flex: 0 0 auto;
+				position: relative;
+				width: 260px;
 			}
-			.hero-portrait img {
-				width: 220px;
-				height: 220px;
-				object-fit: cover;
-				border-radius: 50%;
-				box-shadow: var(--box-shadow);
+			.aura {
+				position: absolute;
+				inset: -30%;
+				background: radial-gradient(closest-side, rgba(227, 73, 137, 0.35), rgba(255, 173, 198, 0.2) 55%, transparent 75%);
+				filter: blur(6px);
+				z-index: 0;
+			}
+			.hero-portrait :global(img) {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				height: auto;
+				mask-image: radial-gradient(ellipse 62% 68% at 50% 45%, black 55%, transparent 100%);
+				-webkit-mask-image: radial-gradient(ellipse 62% 68% at 50% 45%, black 55%, transparent 100%);
+			}
+			.brain-accent {
+				position: absolute;
+				bottom: -2.5rem;
+				right: -3.5rem;
+				width: 120px;
+				z-index: 2;
+				opacity: 0.9;
 			}
 			.hero-text {
-				flex: 1 1 320px;
+				flex: 1 1 340px;
 			}
 			.hero-text h1 {
-				margin-bottom: 0.25em;
+				margin-bottom: 0.2em;
 			}
 			.tagline {
-				color: var(--accent-dark);
-				font-size: 1.25em;
-				font-weight: 700;
+				font-family: var(--font-serif);
+				font-style: italic;
+				color: var(--muted);
+				font-size: 1.3em;
 				margin-bottom: 1em;
 			}
-			.latest {
-				margin-top: 4rem;
-			}
 			.latest h2 {
-				border-bottom: 1px solid rgb(var(--gray-light));
-				padding-bottom: 0.5em;
+				margin-bottom: 1em;
 			}
 			.post-list {
 				list-style: none;
@@ -62,43 +80,73 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 				padding: 0;
 			}
 			.post-list li {
-				margin-bottom: 1.5em;
+				padding: 1.5em 0;
+				border-bottom: 1px solid rgba(var(--brown-tan-rgb), 0.25);
+			}
+			.post-list li:first-child {
+				padding-top: 0;
+			}
+			.post-list li:last-child {
+				border-bottom: none;
 			}
 			.post-list a {
 				text-decoration: none;
-				font-size: 1.25em;
-				font-weight: 700;
-				color: rgb(var(--black));
+				display: block;
+				font-family: var(--font-serif);
+				font-size: 1.5em;
+				font-weight: 600;
+				color: var(--ink);
+				background-image: none;
+				transition: background-position 0.4s ease;
 			}
 			.post-list a:hover {
-				color: var(--accent);
+				background: var(--gradient-brand);
+				background-size: 200% auto;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
 			}
 			.post-list .date {
 				display: block;
-				color: rgb(var(--gray));
-				font-size: 0.9em;
+				color: var(--muted);
+				font-size: 0.85em;
+				margin-top: 0.25em;
 			}
 			.view-all {
 				display: inline-block;
-				margin-top: 1em;
+				margin-top: 1.5em;
+				font-family: var(--font-serif);
+				font-style: italic;
+			}
+			@media (max-width: 640px) {
+				.hero {
+					gap: 2rem;
+				}
+				.hero-portrait {
+					width: 200px;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section class="hero">
+			<section class="hero" data-reveal>
 				<div class="hero-portrait">
-					<Image src={portrait} width={220} height={220} alt={SITE_TITLE} />
+					<div class="aura"></div>
+					<Image src={portrait} width={320} height={320} alt={SITE_TITLE} />
+					<div class="brain-accent"><BrainMotif width={120} /></div>
 				</div>
 				<div class="hero-text">
-					<h1>{SITE_TITLE}</h1>
+					<h1 class="gradient-text">{SITE_TITLE}</h1>
 					{home?.data.tagline && <p class="tagline">{home.data.tagline}</p>}
 					{Content && <Content />}
 				</div>
 			</section>
 
-			<section class="latest">
+			<SectionDivider />
+
+			<section class="latest" data-reveal>
 				<h2>Latest posts</h2>
 				{
 					posts.length === 0 ? (

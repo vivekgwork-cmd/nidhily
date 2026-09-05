@@ -5,7 +5,32 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2>
+			<a href="/" class="brand">
+				<svg class="brand-mark" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+					<path
+						d="M24 30c-8 0-14-6-14-13 4 3 9 4 14 4s10-1 14-4c0 7-6 13-14 13Z"
+						stroke="url(#headerLotusGrad)"
+						stroke-width="1.6"
+						stroke-linejoin="round"
+					></path>
+					<path d="M24 30V10" stroke="url(#headerLotusGrad)" stroke-width="1.6" stroke-linecap="round"></path>
+					<path
+						d="M24 18c-3-6-3-11 0-16 3 5 3 10 0 16Z"
+						stroke="url(#headerLotusGrad)"
+						stroke-width="1.4"
+						stroke-linejoin="round"
+					></path>
+					<defs>
+						<linearGradient id="headerLotusGrad" x1="10" y1="0" x2="38" y2="30" gradientUnits="userSpaceOnUse">
+							<stop offset="0%" stop-color="#e34989" />
+							<stop offset="100%" stop-color="#a98360" />
+						</linearGradient>
+					</defs>
+				</svg>
+				{SITE_TITLE}
+			</a>
+		</h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
@@ -16,32 +41,42 @@ import HeaderLink from './HeaderLink.astro';
 <style>
 	header {
 		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		padding: 0.75em 1.5em;
+		background: transparent;
 	}
 	h2 {
 		margin: 0;
-		font-size: 1em;
+		font-size: 1.1em;
 	}
-
-	h2 a,
-	h2 a.active {
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
 		text-decoration: none;
+		color: var(--ink);
+		font-family: var(--font-serif);
+		font-weight: 600;
+		background-image: none;
+	}
+	.brand-mark {
+		width: 26px;
+		flex-shrink: 0;
 	}
 	nav {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		max-width: 900px;
+		margin: 0 auto;
 	}
-	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
+	.internal-links {
+		display: flex;
+		gap: 0.25em;
 	}
-	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
+	.internal-links :global(a) {
+		padding: 0.5em 0.75em;
+		color: var(--ink);
 	}
 </style>

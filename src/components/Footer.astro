@@ -1,16 +1,21 @@
 ---
+import SectionDivider from './SectionDivider.astro';
 import { SITE_TITLE } from '../consts';
 const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.
+	<SectionDivider />
+	<p>&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.</p>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
+		padding: 0 1.5em 4em 1.5em;
 		text-align: center;
+	}
+	footer p {
+		color: var(--muted);
+		font-size: 0.9em;
+		margin: 0;
 	}
 </style>

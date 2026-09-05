@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import BrainMotif from '../components/BrainMotif.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
@@ -15,19 +16,37 @@ const heading = about?.data.heading ?? 'About Me';
 	<head>
 		<BaseHead title={`${heading} | ${SITE_TITLE}`} description={heading} />
 		<style>
+			.about-hero {
+				position: relative;
+			}
+			.watermark {
+				position: absolute;
+				top: -2rem;
+				right: -3rem;
+				width: 220px;
+				opacity: 0.18;
+				z-index: -1;
+			}
+			h1 {
+				margin-bottom: 1.5rem;
+			}
 			.prose {
 				max-width: 720px;
 			}
 			.prose :global(h2) {
-				margin-top: 1.5em;
+				margin-top: 1.8em;
+				font-size: 1.7em;
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>{heading}</h1>
-			<div class="prose">{Content && <Content />}</div>
+			<div class="about-hero" data-reveal>
+				<div class="watermark"><BrainMotif width={220} /></div>
+				<h1 class="gradient-text">{heading}</h1>
+				<div class="prose">{Content && <Content />}</div>
+			</div>
 		</main>
 		<Footer />
 	</body>
