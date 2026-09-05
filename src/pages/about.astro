@@ -1,9 +1,10 @@
 ---
 import { getEntry, render } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import BrainMotif from '../components/BrainMotif.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import AnimatedBrain from '../components/react/AnimatedBrain';
+import Reveal from '../components/react/Reveal';
 import { SITE_TITLE } from '../consts';
 
 const about = await getEntry('pages', 'about');
@@ -24,7 +25,7 @@ const heading = about?.data.heading ?? 'About Me';
 				top: -2rem;
 				right: -3rem;
 				width: 220px;
-				opacity: 0.18;
+				opacity: 0.16;
 				z-index: -1;
 			}
 			h1 {
@@ -35,17 +36,21 @@ const heading = about?.data.heading ?? 'About Me';
 			}
 			.prose :global(h2) {
 				margin-top: 1.8em;
-				font-size: 1.7em;
+				font-size: 1.5em;
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="about-hero" data-reveal>
-				<div class="watermark"><BrainMotif width={220} /></div>
-				<h1 class="gradient-text">{heading}</h1>
-				<div class="prose">{Content && <Content />}</div>
+			<div class="about-hero">
+				<div class="watermark">
+					<AnimatedBrain client:visible width={220} />
+				</div>
+				<Reveal client:load>
+					<h1 class="gradient-text">{heading}</h1>
+					<div class="prose">{Content && <Content />}</div>
+				</Reveal>
 			</div>
 		</main>
 		<Footer />

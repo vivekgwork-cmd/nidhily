@@ -27,7 +27,7 @@
 }
 
 body {
-	font-family: var(--font-atkinson);
+	font-family: var(--font-sans);
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -36,8 +36,10 @@ body {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--ink);
-	font-size: 20px;
-	line-height: 1.7;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.75;
+	-webkit-font-smoothing: antialiased;
 }
 
 main {
@@ -55,24 +57,129 @@ h5,
 h6 {
 	margin: 0 0 0.5rem 0;
 	color: var(--ink);
-	line-height: 1.15;
-	font-family: var(--font-serif);
-	font-weight: 600;
+	line-height: 1.2;
+	font-family: var(--font-sans);
+	font-weight: 700;
+	letter-spacing: -0.02em;
 }
 h1 {
-	font-size: 3.6em;
+	font-size: 3.2em;
+	font-weight: 800;
 }
 h2 {
-	font-size: 2.4em;
+	font-size: 2.1em;
 }
 h3 {
-	font-size: 1.9em;
+	font-size: 1.6em;
 }
 h4 {
-	font-size: 1.5em;
+	font-size: 1.3em;
 }
 h5 {
+	font-size: 1.1em;
+}
+
+.eyebrow {
+	display: block;
+	margin: 0.6em 0 1.1em;
+	font-size: 0.85em;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--pink-deep);
+}
+
+/* Portrait (src/components/react/Portrait.tsx) */
+.portrait-aura {
+	position: absolute;
+	inset: -6%;
+	background: radial-gradient(closest-side, rgba(var(--pink-deep-rgb), 0.22), rgba(var(--pink-light-rgb), 0.12) 60%, transparent 78%);
+	filter: blur(18px);
+	z-index: 0;
+}
+.portrait-float {
+	position: relative;
+}
+.portrait-img {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: auto;
+	mask-image: radial-gradient(ellipse 82% 86% at 50% 46%, black 92%, transparent 100%);
+	-webkit-mask-image: radial-gradient(ellipse 82% 86% at 50% 46%, black 92%, transparent 100%);
+}
+
+/* Post lists (src/components/react/PostList.tsx) */
+.post-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.post-list li {
+	border-bottom: 1px solid rgba(var(--brown-tan-rgb), 0.25);
+}
+.post-list li:last-child {
+	border-bottom: none;
+}
+.post-list-link {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	width: 100%;
+	padding: 1.75rem 0;
+	text-decoration: none;
+	background-image: none;
+}
+.post-thumb {
+	flex: 0 0 auto;
+	width: 180px;
+	display: block;
+}
+.post-thumb img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+	-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+.post-entry {
+	flex: 1 1 auto;
+}
+.post-title {
+	display: block;
+	font-size: 1.4em;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+}
+.post-date {
+	display: block;
+	margin-top: 0.3em;
+	color: var(--muted);
+	font-size: 0.85em;
+}
+.post-list-link:hover .post-title {
+	background: var(--gradient-brand);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.post-list--compact .post-list-link {
+	padding: 1.1rem 0;
+}
+.post-list--compact .post-title {
 	font-size: 1.2em;
+}
+@media (max-width: 640px) {
+	.post-list-link {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+	.post-thumb {
+		width: 100%;
+	}
 }
 
 .gradient-text {
@@ -91,6 +198,7 @@ b {
 a {
 	color: var(--pink-deep);
 	text-decoration: none;
+	font-weight: 500;
 	background-image: linear-gradient(var(--pink-deep), var(--pink-deep));
 	background-repeat: no-repeat;
 	background-position: 0 100%;
@@ -130,6 +238,7 @@ code {
 	padding: 2px 5px;
 	background-color: rgba(var(--brown-tan-rgb), 0.15);
 	border-radius: 4px;
+	font-size: 0.9em;
 }
 pre {
 	padding: 1.5em;
@@ -144,9 +253,9 @@ blockquote {
 	position: relative;
 	margin: 2em 0;
 	padding: 0.2em 0 0.2em 1.75em;
-	font-family: var(--font-serif);
 	font-style: italic;
-	font-size: 1.35em;
+	font-weight: 500;
+	font-size: 1.25em;
 	color: var(--ink);
 }
 blockquote::before {
@@ -155,7 +264,8 @@ blockquote::before {
 	left: -0.1em;
 	top: -0.2em;
 	font-size: 2.2em;
-	font-family: var(--font-serif);
+	font-style: normal;
+	font-weight: 800;
 	background: var(--gradient-brand);
 	-webkit-background-clip: text;
 	background-clip: text;
@@ -170,25 +280,14 @@ hr {
 
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 17px;
 	}
 	main {
 		padding: 1.5em 1em;
 	}
 	h1 {
-		font-size: 2.6em;
+		font-size: 2.4em;
 	}
-}
-
-/* Scroll-reveal utility — see ScrollReveal.astro for the observer script */
-[data-reveal] {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-[data-reveal].is-visible {
-	opacity: 1;
-	transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -198,10 +297,6 @@ hr {
 		animation-duration: 0.001ms !important;
 		animation-iteration-count: 1 !important;
 		transition-duration: 0.001ms !important;
-	}
-	[data-reveal] {
-		opacity: 1;
-		transform: none;
 	}
 }
 

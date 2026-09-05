@@ -1,21 +1,30 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { getCollection, getEntry, render } from 'astro:content';
-import portrait from '../assets/shrinidhi-portrait.png';
+import portraitSrc from '../assets/shrinidhi-portrait.png';
 import BaseHead from '../components/BaseHead.astro';
-import BrainMotif from '../components/BrainMotif.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import HeroIntro from '../components/react/HeroIntro';
+import Portrait from '../components/react/Portrait';
+import PostList from '../components/react/PostList';
+import Reveal from '../components/react/Reveal';
 import SectionDivider from '../components/SectionDivider.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const home = await getEntry('pages', 'home');
 const { Content } = home ? await render(home) : { Content: null };
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).slice(0, 3);
+const portrait = await getImage({ src: portraitSrc, width: 640 });
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3)
+	.map((post) => ({
+		href: `/blog/${post.id}/`,
+		title: post.data.title,
+		date: post.data.pubDate.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' }),
+	}));
 ---
 
 <!doctype html>
@@ -32,98 +41,25 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 			}
 			.hero-portrait {
 				flex: 0 0 auto;
-				position: relative;
-				width: 260px;
-			}
-			.aura {
-				position: absolute;
-				inset: -30%;
-				background: radial-gradient(closest-side, rgba(227, 73, 137, 0.35), rgba(255, 173, 198, 0.2) 55%, transparent 75%);
-				filter: blur(6px);
-				z-index: 0;
-			}
-			.hero-portrait :global(img) {
-				position: relative;
-				z-index: 1;
-				width: 100%;
-				height: auto;
-				mask-image: radial-gradient(ellipse 62% 68% at 50% 45%, black 55%, transparent 100%);
-				-webkit-mask-image: radial-gradient(ellipse 62% 68% at 50% 45%, black 55%, transparent 100%);
-			}
-			.brain-accent {
-				position: absolute;
-				bottom: -2.5rem;
-				right: -3.5rem;
-				width: 120px;
-				z-index: 2;
-				opacity: 0.9;
+				width: 280px;
 			}
 			.hero-text {
 				flex: 1 1 340px;
 			}
-			.hero-text h1 {
-				margin-bottom: 0.2em;
-			}
-			.tagline {
-				font-family: var(--font-serif);
-				font-style: italic;
-				color: var(--muted);
-				font-size: 1.3em;
-				margin-bottom: 1em;
-			}
 			.latest h2 {
-				margin-bottom: 1em;
-			}
-			.post-list {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-			}
-			.post-list li {
-				padding: 1.5em 0;
-				border-bottom: 1px solid rgba(var(--brown-tan-rgb), 0.25);
-			}
-			.post-list li:first-child {
-				padding-top: 0;
-			}
-			.post-list li:last-child {
-				border-bottom: none;
-			}
-			.post-list a {
-				text-decoration: none;
-				display: block;
-				font-family: var(--font-serif);
-				font-size: 1.5em;
-				font-weight: 600;
-				color: var(--ink);
-				background-image: none;
-				transition: background-position 0.4s ease;
-			}
-			.post-list a:hover {
-				background: var(--gradient-brand);
-				background-size: 200% auto;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-			}
-			.post-list .date {
-				display: block;
-				color: var(--muted);
-				font-size: 0.85em;
-				margin-top: 0.25em;
+				margin-bottom: 1.25em;
 			}
 			.view-all {
 				display: inline-block;
 				margin-top: 1.5em;
-				font-family: var(--font-serif);
-				font-style: italic;
+				font-weight: 600;
 			}
 			@media (max-width: 640px) {
 				.hero {
 					gap: 2rem;
 				}
 				.hero-portrait {
-					width: 200px;
+					width: 220px;
 				}
 			}
 		</style>
@@ -131,37 +67,29 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 	<body>
 		<Header />
 		<main>
-			<section class="hero" data-reveal>
+			<section class="hero">
 				<div class="hero-portrait">
-					<div class="aura"></div>
-					<Image src={portrait} width={320} height={320} alt={SITE_TITLE} />
-					<div class="brain-accent"><BrainMotif width={120} /></div>
+					<Portrait client:load src={portrait.src} width={640} height={780} alt={SITE_TITLE} />
 				</div>
 				<div class="hero-text">
-					<h1 class="gradient-text">{SITE_TITLE}</h1>
-					{home?.data.tagline && <p class="tagline">{home.data.tagline}</p>}
-					{Content && <Content />}
+					<HeroIntro client:load title={SITE_TITLE} tagline={home?.data.tagline} />
+					<Reveal client:visible delay={0.15}>
+						{Content && <Content />}
+					</Reveal>
 				</div>
 			</section>
 
 			<SectionDivider />
 
-			<section class="latest" data-reveal>
-				<h2>Latest posts</h2>
+			<section class="latest">
+				<Reveal client:visible as="div">
+					<h2>Latest posts</h2>
+				</Reveal>
 				{
 					posts.length === 0 ? (
 						<p>No posts yet — check back soon!</p>
 					) : (
-						<ul class="post-list">
-							{posts.map((post) => (
-								<li>
-									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-									<span class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
-								</li>
-							))}
-						</ul>
+						<PostList client:visible posts={posts} compact />
 					)
 				}
 				<a class="view-all" href="/blog">Read all posts &rarr;</a>

@@ -2,13 +2,19 @@
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
+import PostList from '../../components/react/PostList';
+import Reveal from '../../components/react/Reveal';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.map((post) => ({
+		href: `/blog/${post.id}/`,
+		title: post.data.title,
+		date: post.data.pubDate.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' }),
+		thumb: post.data.heroImage,
+	}));
 ---
 
 <!doctype html>
@@ -19,108 +25,15 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 			main {
 				width: 900px;
 			}
-			ul {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				display: flex;
-				align-items: center;
-				gap: 2rem;
-				padding: 2rem 0;
-				border-bottom: 1px solid rgba(var(--brown-tan-rgb), 0.25);
-			}
-			ul li:first-child {
-				padding-top: 0;
-			}
-			ul li:last-child {
-				border-bottom: none;
-			}
-			.thumb {
-				flex: 0 0 auto;
-				width: 200px;
-			}
-			.thumb img {
-				width: 100%;
-				aspect-ratio: 4 / 3;
-				object-fit: cover;
-				mask-image: linear-gradient(to bottom, black 70%, transparent 100%),
-					linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-				mask-composite: intersect;
-				-webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%),
-					linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-				-webkit-mask-composite: source-in;
-			}
-			.entry {
-				flex: 1 1 auto;
-			}
-			.title {
-				margin: 0 0 0.3em 0;
-				font-family: var(--font-serif);
-				font-size: 1.6em;
-				font-weight: 600;
-				color: var(--ink);
-			}
-			.date {
-				margin: 0;
-				color: var(--muted);
-				font-size: 0.85em;
-			}
-			a {
-				text-decoration: none;
-				display: flex;
-				align-items: center;
-				gap: 2rem;
-				width: 100%;
-				background-image: none;
-			}
-			a:hover .title {
-				background: var(--gradient-brand);
-				background-size: 200% auto;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-			}
-			@media (max-width: 640px) {
-				a {
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 1rem;
-				}
-				.thumb {
-					width: 100%;
-				}
-			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1 class="gradient-text" data-reveal>Blog</h1>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li data-reveal>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<div class="thumb">
-											<img src={post.data.heroImage} alt="" />
-										</div>
-									)}
-									<div class="entry">
-										<h2 class="title">{post.data.title}</h2>
-										<p class="date">
-											<FormattedDate date={post.data.pubDate} />
-										</p>
-									</div>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<Reveal client:load as="div">
+				<h1 class="gradient-text">Blog</h1>
+			</Reveal>
+			{posts.length === 0 ? <p>No posts yet — check back soon!</p> : <PostList client:visible posts={posts} />}
 		</main>
 		<Footer />
 	</body>

@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import Reveal from '../components/react/Reveal';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -31,8 +32,8 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				width: 100%;
 				max-height: 480px;
 				object-fit: cover;
-				mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-				-webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+				mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+				-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 			}
 			.prose {
 				width: 720px;
@@ -63,27 +64,29 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<body>
 		<Header />
 		<main>
-			<article data-reveal>
+			<article>
 				<div class="hero-image">
 					{heroImage && <img width="1020" height="510" src={heroImage} alt="" />}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+				<Reveal client:load>
+					<div class="prose">
+						<div class="title">
+							<div class="date">
+								<FormattedDate date={pubDate} />
+								{
+									updatedDate && (
+										<div class="last-updated-on">
+											Last updated on <FormattedDate date={updatedDate} />
+										</div>
+									)
+								}
+							</div>
+							<h1 class="gradient-text">{title}</h1>
+							<hr />
 						</div>
-						<h1 class="gradient-text">{title}</h1>
-						<hr />
+						<slot />
 					</div>
-					<slot />
-				</div>
+				</Reveal>
 			</article>
 		</main>
 		<Footer />
