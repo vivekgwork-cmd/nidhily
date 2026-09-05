@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: vivekgwork-cmd/nidhily
+  branch: main
+  # This must be the live URL of the deployed site (Cloudflare Pages).
+  # It hosts the /auth and /callback OAuth routes in /functions.
+  # UPDATE THIS after the first deploy if the Pages URL differs.
+  base_url: https://nidhily.pages.dev
+  auth_endpoint: auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Description", name: "description", widget: "text", hint: "One or two sentences. Shown in previews and search results." }
+      - { label: "Publish Date", name: "pubDate", widget: "datetime" }
+      - { label: "Cover Image", name: "heroImage", widget: "image", required: false }
+      - { label: "Save as draft", name: "draft", widget: "boolean", default: false, hint: "While checked, this post stays hidden from the site." }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Site Pages"
+    files:
+      - name: "home"
+        label: "Home Page"
+        file: "src/content/pages/home.md"
+        fields:
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Intro Text", name: "body", widget: "markdown" }
+      - name: "about"
+        label: "About Page"
+        file: "src/content/pages/about.md"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Bio", name: "body", widget: "markdown" }
