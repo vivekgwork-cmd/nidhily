@@ -1,11 +1,11 @@
 ---
-heading: "About Me"
+heading: About Me
 ---
-I'm Dr. ShriNidhi B M, currently pursuing my MD in **Manas Shastra** at SDM College of Ayurveda & Hospital, Hassan — the branch of Ayurveda concerned with the mind, mental health, and the classical understanding of psychiatric and psychosomatic conditions.
+I'm Dr. Shrinidhi,  currently pursuing my MD in **Manasaroga** at SDM College of Ayurveda & Hospital, Hassan — the branch of Ayurveda concerned with the mind, mental health, and the classical understanding of psychiatric and psychosomatic conditions.
 
 ## What I focus on
 
-Manas Shastra sits at an interesting intersection: it draws on centuries-old Ayurvedic texts on the mind (*sattva*, *rajas*, *tamas*, and the classical descriptions of *unmada* and other mental disorders), while engaging with the same questions modern psychiatry asks about mental wellbeing, behaviour, and healing.
+The mind is a universe of its own , we spend so much time understanding the world outside us, and so little understanding the one within . Manasaroga is a branch that deals with mind - its health, the way it influences our body, emotions , behavior etc.,  and provides solutions through different modalities of treatment like Daivayapashaya, Yuktivyapashaya and Satwavajaya. 
 
 My work as a postgraduate scholar involves clinical training, case studies, and research into how these classical frameworks can inform how we think about mental health today.
 
