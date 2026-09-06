@@ -3,6 +3,8 @@ heading: About Me
 ---
 I'm Dr. Shrinidhi,  currently pursuing my MD in Department of **Manasaroga** at SDM College of Ayurveda & Hospital, Hassan . Someone who is trying to understand mind through the lens of Ayurveda. Trying to find answers for my own doubts. As they say its complicated , lets figure it out through this journey. 
 
+Apart from being a doctor , I passionately enjoy Art, Music and dancing my way out through everything. 
+
 ## But first what is Manasaroga?
 
 The mind is a universe of its own , we spend so much time understanding the world outside us, and so little understanding the one within . Manasaroga is a branch that deals with mind - its health, the way it influences our body, emotions , behavior etc., the psychiatric disorders  and provides solutions through different modalities of treatment like Daivayapashaya, Yuktivyapashaya and Satwavajaya. 
