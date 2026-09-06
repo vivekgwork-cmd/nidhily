@@ -1,17 +1,21 @@
 ---
 heading: About Me
 ---
-I'm Dr. Shrinidhi,  currently pursuing my MD in **Manasaroga** at SDM College of Ayurveda & Hospital, Hassan — the branch of Ayurveda concerned with the mind, mental health, and the classical understanding of psychiatric and psychosomatic conditions.
+I'm Dr. Shrinidhi,  currently pursuing my MD in **Manasaroga** at SDM College of Ayurveda & Hospital, Hassan . Trying to understand mind through the lens of Ayurveda. Trying to find answers for my own doubts. As they say its complicated , naturally , I decided to study it. 
 
-## What I focus on
+## What is Manasaroga? 
 
-The mind is a universe of its own , we spend so much time understanding the world outside us, and so little understanding the one within . Manasaroga is a branch that deals with mind - its health, the way it influences our body, emotions , behavior etc.,  and provides solutions through different modalities of treatment like Daivayapashaya, Yuktivyapashaya and Satwavajaya. 
+The mind is a universe of its own , we spend so much time understanding the world outside us, and so little understanding the one within . Manasaroga is a branch that deals with mind - its health, the way it influences our body, emotions , behavior etc., the psychiatric disorders  and provides solutions through different modalities of treatment like Daivayapashaya, Yuktivyapashaya and Satwavajaya. 
 
-My work as a postgraduate scholar involves clinical training, case studies, and research into how these classical frameworks can inform how we think about mental health today.
+My usual day as a postgraduate scholar involves patient interactions, case studies , research papers , counselling sessions, presentations and a lot of listening, observing and learning in between. 
 
-## Why this blog
+## Why this blog?
 
-I started this space to write about what I'm learning as I go — reflections from the wards, notes on Ayurvedic psychiatry, and the everyday experience of being a postgraduate medical scholar. Nothing here is a substitute for professional medical advice; it's simply a record of my learning journey, shared in case it's useful or interesting to someone else.
+Because PG life is full of things worth remembering. 
+
+An interesting case, A concept from textbook that suddenly made sense , A research paper that made me dig the whole internet, A thesis that thought me patience, Those long ward rounds where I learn something new everyday and all the lil moments that happen in between. Everything had to be documented and there is no better place than a blog where i could do that. 
+
+> A lil note : Everything is comes from my learning and personal experiences that i want to journal. The information should not be taken as a substitute for professional medical advice. Clinical experiences are anonymized to protect the patient's privacy and  confidentiality.  
 
 ## Get in touch
 
