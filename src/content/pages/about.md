@@ -15,7 +15,7 @@ Because PG life is full of things worth remembering.
 
 OPDs, An interesting case, A concept from textbook that suddenly made sense , A research paper that made me dig the whole internet, A thesis that thought me patience, those long ward rounds where I learn something new everyday, those scolding that become a routine ,  friends that keep you alive and all the lil moments that happen in between. Everything had to be documented and there is no better place than a blog where I could do that. 
 
-A lil note : Everything here comes from my learning and personal experiences that i want to journal. The information should not be taken as a substitute for professional medical advice. Clinical experiences are anonymized to protect the patient's privacy and  confidentiality.  
+**A lil note** : Everything here comes from my learning and personal experiences that I want to journal. The information should not be taken as a substitute for professional medical advice. Clinical experiences are anonymized to protect the patient's privacy and  confidentiality.  
 
 ## Get in touch
 
