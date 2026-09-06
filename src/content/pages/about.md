@@ -1,7 +1,7 @@
 ---
 heading: About Me
 ---
-I'm Dr. Shrinidhi,  currently pursuing my MD in Department of **Manasaroga** at SDM College of Ayurveda & Hospital, Hassan . Someone who is trying to understand mind through the lens of Ayurveda. Trying to find answers for my own doubts. As they say its complicated , lets figure it out through this journey. 
+I'm Dr. Shrinidhi,  currently pursuing my MD in Department of **Manasaroga.** Someone who is trying to understand mind through the lens of Ayurveda. Trying to find answers for my own doubts. As they say its complicated , lets figure it out through this journey. 
 
 Apart from being a doctor , I passionately enjoy Art, Music and dancing my way out through everything. 
 
