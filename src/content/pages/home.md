@@ -1,5 +1,5 @@
 ---
-tagline: MD Manasaroga (Ayurveda)
+tagline: MD Manasaroga Postgraduate
 ---
 Hello, I'm Dr. Shrinidhi — an Ayurvedic physician , currently pursuing my MD in the Department of Manasaroga (Ayurvedic psychiatry)  at SDM College of Ayurveda and Hospital , Hassan.
 
