@@ -32,7 +32,4 @@ These are the habits we need to change.
 >
 > He says ," I reside as *Agni* in all the living beings on this earth."     
 
-\
-So, next time you feel off, look at how are you taking care of your *Agni.* 
-
-\- Dr. Shrinidhi
+So, next time you feel off, look at how are you taking care of your *Agni.*
