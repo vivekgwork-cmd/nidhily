@@ -21,7 +21,8 @@ We often neglect the A*gni* and blame our mind for not functioning properly , ev
 \
 Skipping breakfast just because am running late to OPD,\
 Having dinner late at night ,\
-Munching whenever am bored and so on 
+Munching whenever am bored \
+and so on 
 
 These are the habits we need to change.
 
