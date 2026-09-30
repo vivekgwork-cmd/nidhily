@@ -25,13 +25,13 @@ Munching whenever am bored and so on
 
 These are the habits we need to change.
 
-Ending this with a note that Krishna says in *Bhagwad Geeta ,*\
+Ending this with Krishna's note from  *Bhagwad Geeta ,*\
 \
 **अहं वैश्वानरो भूत्वा प्राणिनां देहमाश्रत: ।**\
 **प्राणापानसमायुक्त: पचाम्यन्नं चतुर्विधम् ॥ (BG 15.14)**
 
-He says ," I reside as *Agni* in all the living beings on this earth."     
+He says ," I reside as *Agni* in all forms of living beings on this earth."     
 
-Perhaps by respecting our *Agni* is, in its simplest form , a way of honouring the Divine within.
+Perhaps by respecting our *Agni* , in its simplest form , is a way of honoring the Divine within.
 
 So, next time you feel off, look at how are you taking care of your *Agni.* Because the mind we spend so much time trying to understand - **lives in that body.**
