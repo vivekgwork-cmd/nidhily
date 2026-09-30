@@ -1,13 +1,13 @@
 ---
 title: YOUR MIND HAS AN APPETITE TOO.
-description: >
-  Have you ever had that strange feeling in your stomach just before an
-  important conversation ?
-
-  Lost your appetite after hearing a bad news ?
+description: Lets explore Agni and Manas
 pubDate: 2026-09-30T17:31:00.000+05:30
 draft: false
 ---
+Have you ever had that strange feeling in your stomach just before an important conversation ?
+
+Lost your appetite after hearing a bad news ?
+
 That's how we know our mind and body are constantly having a conversation - which we call the gut-brain axis. Our gut contains huge network of neurons that communicates continuously with the brain
 
 More than 90% of the body's serotonin is produced by the enterochromoffin cells in our GI tract . Serotonin isn't just a happy hormone but also has its role in mood, sleep and appetite.
